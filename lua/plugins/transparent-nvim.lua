@@ -1,8 +1,8 @@
 return {
-	"xiyaowong/transparent.nvim",
+	"itskokeh/transparent.nvim",
 	lazy = false,
 	config = function()
-		vim.cmd([[hi StatusLine ctermbg=0 cterm=NONE]])
+		vim.cmd("hi StatusLine ctermbg=none guibg=none")
 		require("transparent").setup({
 			-- table: default groups
 			groups = {

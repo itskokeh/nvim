@@ -1,7 +1,8 @@
 local opts = {
   ensure_installed = {
     'efm',
-    'lua_ls'
+    'lua_ls',
+    'ts_ls'
   },
   automatic_installation = true
 }
