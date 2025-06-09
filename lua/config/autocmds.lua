@@ -9,8 +9,12 @@ vim.api.nvim_create_autocmd("BufWritePre", {
       return
     end
 
-    vim.lsp.buf.format({ name = "efm", async = true })
+    vim.lsp.buf.format({
+      async = true,
+      filter = function(client)
+        return client.name == "efm"
+      end
+    })
   end,
 })
-
 

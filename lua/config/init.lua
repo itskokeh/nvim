@@ -21,7 +21,10 @@ vim.opt.rtp:prepend(lazypath)
 require('config.globals')
 require('config.options')
 require('config.keymaps')
-require('config.autocmds')
+-- require('config.autocmds')
+require('test-efm')
+-- print(vim.inspect(require("efmls-configs.formatters.stylua")))
+-- print(vim.inspect(require("efmls-configs.linters.luacheck")))
 
 local opts = {
 	defaults = {

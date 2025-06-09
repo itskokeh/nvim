@@ -1,17 +1,26 @@
 local keymap = vim.keymap
-local vapiset = vim.api.nvim_set_keymap
 
-local opts = { noremap = true, silent = true}
+local opts = { noremap = true, silent = true }
 
 -- Directory navigation
 keymap.set("n", "<leader>m", ":NvimTreeFocus<CR>", opts)
 keymap.set("n", "<leader>f", ":NvimTreeToggle<CR>", opts)
 
--- Pane Navigation
+-- Pane and Window Navigation
 keymap.set("n", "<C-h>", "<C-w>h", opts) -- Navigate Left
 keymap.set("n", "<C-j>", "<C-w>j", opts) -- Navigate Down
 keymap.set("n", "<C-k>", "<C-w>k", opts) -- Navigate Up
 keymap.set("n", "<C-l>", "<C-w>l", opts) -- Navigate Right
+keymap.set("t", "<C-h>", "[[<Cmd>wincmd h<CR>]]", opts) -- Navigate Left
+keymap.set("t", "<C-j>", "[[<Cmd>wincmd j<CR>]]", opts) -- Navigate Down
+keymap.set("t", "<C-k>", "[[<Cmd>wincmd k<CR>]]", opts) -- Navigate Up
+keymap.set("t", "<C-l>", "[[<Cmd>wincmd l<CR>]]", opts) -- Navigate Right
+keymap.set("n", "<C-h>", ":TmuxNavigateLeft<CR>", opts) -- Navigate Left
+keymap.set("n", "<C-j>", ":TmuxNavigateDown<CR>", opts) -- Navigate Down
+keymap.set("n", "<C-k>", ":TmuxNavigateUp<CR>", opts) -- Navigate Up
+keymap.set("n", "<C-l>", ":TmuxNavigateRight<CR>", opts) -- Navigate Right
+
+
 
 -- Window Management
 keymap.set("n", "<leader>sv", ":vsplit<CR>", opts) -- Split Vertically
@@ -23,25 +32,8 @@ keymap.set("v", "<", "<gv")
 keymap.set("v", ">", ">gv")
 
 -- Comments
-vim.api.nvim_set_keymap("n", "<C-_>", "gcc", { noremap = false })
-vim.api.nvim_set_keymap("v", "<C-_>", "gcc", { noremap = false })
+vim.api.nvim_set_keymap("n", "<C-/>", "gcc", { noremap = false })
+vim.api.nvim_set_keymap("v", "<C-/>", "gcc", { noremap = false })
 
--- Terminal
-function toggle_terminal()
-  local bufnr = vim.fn.bufnr('terminal')
-  if bufnr == -1 then
-    vim.cmd('botright split | terminal')
-    vim.cmd('startinsert')
-  else
-    local winid = vim.fn.bufwinid(bufnr)
-    if winid == -1 then
-      vim.cmd('botright split | buffer' ..butnr)
-      vim.cmd('startinsert')
-    else
-      vim.api.nvim_win_hide(winid)
-    end
-  end
-end
-
-vim.api.nvim_set_keymap('n', '<C-`>', '<cmd>lua toggle_terminal()<CR>', opts)
-vim.api.nvim_set_keymap('t', '<C-`>', '<cmd>lua toggle_terminal()<CR>', opts)
+vim.api.nvim_set_keymap("n", "<C-`>", "<cmd>:terminal<CR>", opts)
+vim.api.nvim_set_keymap("t", "<C-`>", "<cmd>:terminal<CR>", opts)
