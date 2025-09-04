@@ -42,6 +42,9 @@ local config = function()
 		capabilities = capabilities,
 		filetypes = {
 			"typescript",
+      "javascript",
+      "javascriptreact",
+      "typescriptreact",
 		},
 		root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json"),
 	})
@@ -56,6 +59,7 @@ local config = function()
 		filetypes = {
 			"lua",
 			"typescript",
+      "svelte",
 		},
 		init_options = {
 			documentFormatting = true,
@@ -69,6 +73,7 @@ local config = function()
 			languages = {
 				lua = { luacheck, stylua },
 				typescript = { eslint_d, prettierd },
+        svelte = { eslint_d, prettierd }
 			},
 		},
 	})

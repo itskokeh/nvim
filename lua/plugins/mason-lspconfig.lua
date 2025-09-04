@@ -2,7 +2,8 @@ local opts = {
   ensure_installed = {
     'efm',
     'lua_ls',
-    'ts_ls'
+    'ts_ls',
+    'svelte',
   },
   automatic_installation = true
 }

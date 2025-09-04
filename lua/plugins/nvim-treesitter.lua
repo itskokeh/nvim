@@ -11,6 +11,7 @@ local config = function()
       'json',
       'javascript',
       'typescript',
+      'svelte',
       'yaml',
       'html',
       'css',
